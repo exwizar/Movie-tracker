@@ -2,12 +2,13 @@ import axios from "axios";
 import { FilmAction, FilmActionTypes, IFilm } from "../../interface/film";
 import {Dispatch} from "redux";
 
-export const getFilmList =  (page = 1) => {
+export const getFilmList =  (page = 1, limit = 20) => {
     return async (dispatch: Dispatch<FilmAction>) => {
         try {
             dispatch({type: FilmActionTypes.FETCH_FILMS})
             const response = await axios.get<IFilm[]>(`https://kinopoiskapiunofficial.tech/api/v2.2/films/top?type=TOP_250_BEST_FILMS&page=${page}`, {
              method: 'GET',
+             params: {_page: page, _limit: limit},
              headers: {
                  'X-API-KEY': 'be634f3e-0f65-4b41-b7db-5f4e73ef8949',
                  'Content-Type': 'application/json',
@@ -23,5 +24,9 @@ export const getFilmList =  (page = 1) => {
             })
         }
     }
+}
+
+export function setTodoPage(page: number): FilmAction {
+    return {type: FilmActionTypes.SET_FILM_PAGE, payload: page}
 }
 

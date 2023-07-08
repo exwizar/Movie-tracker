@@ -1,44 +1,25 @@
-// import React from "react";
-// import { IFilm } from "../interface/film";
-
-
-// export interface ListPropts {
-//     [films: string]: any;
-// }
-
-// export const List: React.FC<ListPropts> = ({films}) => {
-
-//     const filmsArr: IFilm[] = films.films
-//     return (
-//         <div>
-//             {filmsArr?.length ?
-//                 filmsArr.map((film) => (
-//                     <div key={film.filmId}>{film.year}</div>
-//                 )):
-//                 <div>Список пуст</div>
-//             }
-//         </div>
-//     )
-// }
-
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useTypedSelector } from '../hooks/useTypedSelector'
-import {getFilmList} from "../store/action-creators/fiim";
 import {useActions} from "../hooks/useActions";
 import { IFilm } from '../interface/film';
+import ReactPaginate from 'react-paginate';
+import { Pagination } from '@mui/material';
 
 
 
 const FilmList: React.FC = () => {
-  const {film, error, loading} = useTypedSelector(state => state.film)
-  const {getFilmList} = useActions()
+  const {film, error, loading, limit, page} = useTypedSelector(state => state.film)
+  const {getFilmList, setTodoPage} = useActions()
+  const films = film.films
   useEffect(() => {
-    getFilmList()
-}, [])
+    getFilmList(page, limit)
+}, [page])
 
-let films = film.films
 
-console.log(film.pagesCount)
+
+const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+  setTodoPage(value)
+};
 
 if (loading) {
   return <h1>Идет загрузка...</h1>
@@ -52,7 +33,12 @@ return (
     {films?.map((item: IFilm) => 
       <div key={item.filmId}>{item.filmId}</div>
     )}
-  </div>
+    <div style={{fontSize: 20}}>
+
+        </div>
+        <Pagination count={13} page={page} onChange={handleChange} variant="outlined" color="standard"  size="large" />
+      </div>
+
 );
 };
 

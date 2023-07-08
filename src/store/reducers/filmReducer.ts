@@ -2,18 +2,23 @@ import { FilmAction, FilmActionTypes, FilmState, IFilm } from "../../interface/f
 
 export const initialState: FilmState = {
     film: [],
+    page: 1,
     loading: false,
-    error: null
+    error: null,
+    limit: 20
+    
 }
 
 export const filmReducer = (state = initialState, action: FilmAction): FilmState => {
     switch(action.type) {
         case FilmActionTypes.FETCH_FILMS:
-            return {loading: true, error: null, film: []}
+            return {...state, loading: true, error: null, film: []}
         case FilmActionTypes.FETCH_FILMS_SUCCESS:
-            return {loading: false, error: null, film: action.payload}
+            return {...state,loading: false, error: null, film: action.payload}
         case FilmActionTypes.FETCH_FILMS_ERROR:
-            return {loading: false, error: action.payload, film: []}
+            return {...state,loading: false, error: action.payload, film: []}
+        case FilmActionTypes.SET_FILM_PAGE:
+            return {...state, page: action.payload}
         default:
             return state
     }
