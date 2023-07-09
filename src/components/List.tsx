@@ -31,14 +31,19 @@ if (error) {
 return (
   <div>
     {films?.map((item: IFilm) => 
-      <div key={item.filmId}>{item.filmId}</div>
+      <div key={item.filmId}>{item.nameRu}</div>
     )}
     <div style={{fontSize: 20}}>
 
         </div>
-        <Pagination count={13} page={page} onChange={handleChange} variant="outlined" color="standard"  size="large" />
+        <Pagination count={13}
+          page={page}
+          onChange={handleChange}
+          variant="outlined"
+          color="standard"
+          size="large"
+        />
       </div>
-
 );
 };
 
