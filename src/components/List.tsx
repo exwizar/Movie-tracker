@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import {useActions} from "../hooks/useActions";
 import { IFilm } from '../interface/film';
-import ReactPaginate from 'react-paginate';
 import { Pagination } from '@mui/material';
+import FilmCard from './filmCard/FilmCard';
 
 
 
@@ -30,8 +30,8 @@ if (error) {
 
 return (
   <div>
-    {films?.map((item: IFilm) => 
-      <div key={item.filmId}>{item.nameRu}</div>
+    {films?.map((film: IFilm) => 
+      <FilmCard key={film.filmId} film={film} />
     )}
     <div style={{fontSize: 20}}>
 
