@@ -7,6 +7,8 @@ export interface IFilm {
     rating?: string;
     year?: string; //!!!
     genres?: any;
+    filmLength: string;
+    countries: any[]
 }
 
 export interface FilmState {
