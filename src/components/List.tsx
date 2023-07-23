@@ -4,6 +4,7 @@ import {useActions} from "../hooks/useActions";
 import { IFilm } from '../interface/film';
 import { Pagination } from '@mui/material';
 import FilmCard from './filmCard/FilmCard';
+import './list.scss'
 
 
 
@@ -34,8 +35,6 @@ return (
       <FilmCard key={film.filmId} film={film} />
     )}
     <div className='pagination'>
-
-        </div>
         <Pagination count={13}
           page={page}
           onChange={handleChange}
@@ -44,6 +43,7 @@ return (
           size="large"
         />
       </div>
+  </div>
 );
 };
 
