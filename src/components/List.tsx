@@ -33,7 +33,7 @@ return (
     {films?.map((film: IFilm) => 
       <FilmCard key={film.filmId} film={film} />
     )}
-    <div style={{fontSize: 20}}>
+    <div className='pagination'>
 
         </div>
         <Pagination count={13}
