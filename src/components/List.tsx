@@ -29,7 +29,7 @@ if (error) {
 }
 
 return (
-  <div>
+  <div className='list'>
     {films?.map((film: IFilm) => 
       <FilmCard key={film.filmId} film={film} />
     )}
