@@ -6,7 +6,7 @@ interface Props {
 
 const MovieBasket = (counter: Props) => {
   return (
-    <div></div>
+    <div>1</div>
   )
 }
 
