@@ -1,3 +1,7 @@
+export interface IMovieBasket {
+    counter: number
+}
+
 export interface IFilm {
     filmId?: number;
     nameEn?: string;
