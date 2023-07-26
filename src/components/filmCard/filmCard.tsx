@@ -1,6 +1,8 @@
 import React from 'react'
 import { IFilm } from '../../interface/film'
 import './film.scss'
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
 
 interface FilmProps {
     film: IFilm;
@@ -8,8 +10,17 @@ interface FilmProps {
 
 const FilmCard: React.FC<FilmProps> = ({film}) => {
   let countries = film.countries.map(item => item.country)
+  const {movie} = useTypedSelector(state => state.movie)
+  const dispatch = useDispatch();
+
+  const movieCounter = () => {
+    dispatch({type:"MOVIE_ADD", payload: 1})
+  }
 
 
+  console.log(movie)
+
+  
   return (
     <div className='card'>
 
@@ -29,7 +40,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn'>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => movieCounter()}>Буду смотреть</button>
         </div>
     </div>
   )

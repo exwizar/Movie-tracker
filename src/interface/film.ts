@@ -1,5 +1,5 @@
 export interface IMovieBasket {
-    counter: number
+    movie: number
 }
 
 export interface IFilm {
