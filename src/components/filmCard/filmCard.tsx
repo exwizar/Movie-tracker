@@ -3,6 +3,7 @@ import { IFilm } from '../../interface/film'
 import './film.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
+import { CompletionTriggerKind } from 'typescript';
 
 interface FilmProps {
     film: IFilm;
@@ -13,11 +14,13 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
   const {movie} = useTypedSelector(state => state.movie)
   const dispatch = useDispatch();
 
-  const movieCounter = (nameRu: any, posterUrlPreview: any) => {
+  const movieCounter = (nameRu: any, film: any) => {
     let movieNameRu = movie.map(item => item.nameRu);
     console.log(movieNameRu)
+    console.log(film)
+    console.log(movie)
     if(!movieNameRu.includes(nameRu) ) {
-      dispatch({type:"MOVIE_ADD", payload: {nameRu , posterUrlPreview}})
+      dispatch({type:"MOVIE_ADD", payload: film})
     } else {
       console.log('no work')
     }
@@ -43,7 +46,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => movieCounter(film.nameRu, film.posterUrlPreview)}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => movieCounter(film.nameRu, film)}>Буду смотреть</button>
         </div>
     </div>
   )
