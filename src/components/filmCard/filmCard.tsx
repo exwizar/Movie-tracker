@@ -13,12 +13,15 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
   const {movie} = useTypedSelector(state => state.movie)
   const dispatch = useDispatch();
 
-  const movieCounter = () => {
-    dispatch({type:"MOVIE_ADD", payload: 1})
+  const movieCounter = (nameRu: any, posterUrlPreview: any) => {
+    let movieNameRu = movie.map(item => item.nameRu);
+    console.log(movieNameRu)
+    if(!movieNameRu.includes(nameRu) ) {
+      dispatch({type:"MOVIE_ADD", payload: {nameRu , posterUrlPreview}})
+    } else {
+      console.log('no work')
+    }
   }
-
-
-  console.log(movie)
 
   
   return (
@@ -40,7 +43,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => movieCounter()}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => movieCounter(film.nameRu, film.posterUrlPreview)}>Буду смотреть</button>
         </div>
     </div>
   )
