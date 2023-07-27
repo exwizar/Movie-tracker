@@ -14,11 +14,9 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
   const {movie} = useTypedSelector(state => state.movie)
   const dispatch = useDispatch();
 
-  const movieCounter = (nameRu: any, film: any) => {
+  const movieAdd = (nameRu: any, film: any) => {
     let movieNameRu = movie.map(item => item.nameRu);
     console.log(movieNameRu)
-    console.log(film)
-    console.log(movie)
     if(!movieNameRu.includes(nameRu) ) {
       dispatch({type:"MOVIE_ADD", payload: film})
     } else {
@@ -46,7 +44,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => movieCounter(film.nameRu, film)}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => movieAdd(film.nameRu, film)}>Буду смотреть</button>
         </div>
     </div>
   )
