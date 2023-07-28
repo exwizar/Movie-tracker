@@ -1,28 +1,40 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { IFilm } from '../../interface/film'
 import './film.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
-import { CompletionTriggerKind } from 'typescript';
 
 interface FilmProps {
     film: IFilm;
 }
 
+
 const FilmCard: React.FC<FilmProps> = ({film}) => {
+  const items =
+  localStorage.getItem("movie") !== null
+    ? JSON.parse(localStorage.getItem("movie") || '[]')
+    : [];
+
+
   let countries = film.countries.map(item => item.country)
   const {movie} = useTypedSelector(state => state.movie)
   const dispatch = useDispatch();
 
-  const movieAdd = (nameRu: any, film: any) => {
-    let movieNameRu = movie.map(item => item.nameRu);
-    console.log(movieNameRu)
-    if(!movieNameRu.includes(nameRu) ) {
-      dispatch({type:"MOVIE_ADD", payload: film})
+  const movieAdd = (id?: any) => {
+    let movieId = movie.map(item => item);
+    console.log(movieId)
+    if(!movieId.includes(id)) {
+      dispatch({type:"MOVIE_ADD", payload: id})
     } else {
       console.log('no work')
     }
   }
+  localStorage.setItem('movie', JSON.stringify(movie.map(item=>item)))
+
+  useEffect(() => {
+    localStorage.setItem('movie', JSON.stringify(items))
+    console.log(movie)
+  },[items]);
 
   
   return (
@@ -44,7 +56,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => movieAdd(film.nameRu, film)}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => movieAdd(film.filmId)}>Буду смотреть</button>
         </div>
     </div>
   )
