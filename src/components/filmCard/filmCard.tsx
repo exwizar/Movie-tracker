@@ -18,7 +18,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
   const dispatch = useDispatch();
 
 
-  const movieAdd = (id?: any) => {
+  const handleAddMovie = (id?: any) => {
     let movieId: string = JSON.parse(localStorage.getItem("movie") || '[]');
     console.log(movieId)
     if(!movieId.includes(id)) {
@@ -51,7 +51,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => movieAdd(film.filmId)}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => handleAddMovie(film.filmId)}>Буду смотреть</button>
         </div>
     </div>
   )
