@@ -4,24 +4,22 @@ import './film.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
 
+
+
 interface FilmProps {
     film: IFilm;
 }
 
 
 const FilmCard: React.FC<FilmProps> = ({film}) => {
-  const items =
-  localStorage.getItem("movie") !== null
-    ? JSON.parse(localStorage.getItem("movie") || '[]')
-    : [];
-
 
   let countries = film.countries.map(item => item.country)
   const {movie} = useTypedSelector(state => state.movie)
   const dispatch = useDispatch();
 
+
   const movieAdd = (id?: any) => {
-    let movieId = movie.map(item => item);
+    let movieId: string = JSON.parse(localStorage.getItem("movie") || '[]');
     console.log(movieId)
     if(!movieId.includes(id)) {
       dispatch({type:"MOVIE_ADD", payload: id})
@@ -29,14 +27,11 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
       console.log('no work')
     }
   }
-  localStorage.setItem('movie', JSON.stringify(movie.map(item=>item)))
-
   useEffect(() => {
-    localStorage.setItem('movie', JSON.stringify(items))
-    console.log(movie)
-  },[items]);
+    localStorage.setItem('movie', JSON.stringify(movie))
+  },[movie]);
 
-  
+
   return (
     <div className='card'>
 
