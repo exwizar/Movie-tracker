@@ -1,5 +1,6 @@
 export interface IMovieBasket {
     movie: IFilm[]
+    error: null | string;
 }
 
 export interface IFilm {
