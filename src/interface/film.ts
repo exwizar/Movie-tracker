@@ -49,3 +49,20 @@ interface setFilmPage {
 }
 
 export type FilmAction = FetchFilmsAction | FetchFilmsSuccessAction | FetchFilmsErrorAction | setFilmPage;
+
+export enum MovieBasketActionTypes {
+    MOVIE_ADD = "MOVIE_ADD",
+    MOVIE_ERROR = "MOVIE_ERROR"
+}
+
+interface MovieAction {
+    type: FilmActionTypes.FETCH_FILMS_ERROR;
+    payload: string;
+}
+interface MovieBasketErrorAction {
+    type: FilmActionTypes.FETCH_FILMS_ERROR;
+    payload: string;
+}
+
+export type MovieBacketAction = MovieBasketErrorAction | MovieAction;
+
