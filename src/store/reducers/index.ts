@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 import { filmReducer } from './filmReducer'
-import { MovieBasketReducer } from './movieBasketReducer'
+import { MovieBasketReducer } from './movieLSReducer'
 
 export const rootReducer = combineReducers({
     film: filmReducer,
