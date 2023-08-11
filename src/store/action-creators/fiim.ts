@@ -26,7 +26,7 @@ export const getFilmList =  (page = 1, limit = 20) => {
     }
 }
 
-export function setTodoPage(page: number): FilmAction {
+export function setFilmPage(page: number): FilmAction {
     return {type: FilmActionTypes.SET_FILM_PAGE, payload: page}
 }
 

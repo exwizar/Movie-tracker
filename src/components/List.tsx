@@ -11,7 +11,7 @@ import './list.scss'
 
 const FilmList: React.FC = () => {
   const {film, error, loading, limit, page} = useTypedSelector(state => state.film)
-  const {getFilmList, setTodoPage} = useActions()
+  const {getFilmList, setFilmPage} = useActions()
   const {getFilmIdLS} = useActions()
   const films = film.films
   const {movie} = useTypedSelector(state => state.movie)
@@ -28,7 +28,7 @@ const {bookmarkWithFilms} = useTypedSelector(state => state.bookmark)
 console.log(bookmarkWithFilms)
 
 const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
-  setTodoPage(value)
+  setFilmPage(value)
 };
 
 
