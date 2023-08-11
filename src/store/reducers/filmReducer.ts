@@ -1,4 +1,4 @@
-import { FilmAction, FilmActionTypes, FilmState, IFilm } from "../../interface/film"
+import { FilmAction, FilmActionTypes, FilmState } from "../../interface/film"
 
 export const initialState: FilmState = {
     film: [],
