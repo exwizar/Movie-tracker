@@ -1,7 +1,3 @@
-export interface IMovieBasket {
-    movie: IFilm[];
-    error: null | string;
-}
 
 export interface IFilm {
     filmId?: number;
@@ -50,19 +46,53 @@ interface setFilmPage {
 
 export type FilmAction = FetchFilmsAction | FetchFilmsSuccessAction | FetchFilmsErrorAction | setFilmPage;
 
+export interface IMovieBasket {
+    movie: IFilm[];
+    error: null | string;
+}
+
 export enum MovieBasketActionTypes {
     MOVIE_ADD = "MOVIE_ADD",
     MOVIE_ERROR = "MOVIE_ERROR"
 }
 
-interface MovieAction {
-    type: FilmActionTypes.FETCH_FILMS_ERROR;
-    payload: string;
+interface FetchMovieIdAction {
+    type: MovieBasketActionTypes.MOVIE_ADD
+    payload: any[]
 }
-interface MovieBasketErrorAction {
-    type: FilmActionTypes.FETCH_FILMS_ERROR;
+interface FetchMovieIdErrorAction {
+    type: MovieBasketActionTypes.MOVIE_ERROR;
     payload: string;
 }
 
-export type MovieBacketAction = MovieBasketErrorAction | MovieAction;
+export type MovieBacketAction = FetchMovieIdErrorAction | FetchMovieIdAction;
+
+export interface BookmarkState {
+    [bookmarkWithFilms: string]: any
+    error: null | string
+}
+
+
+export enum BookMarkActionTypes {
+    FETCH_BOOKMARK = "FETCH_BOOKMARK",
+    BOOKMARK_ADD = "BOOKMARK_ADD",
+    BOOKMARK_ERROR = "BOOKMARK_ERROR"
+}
+
+interface FETCH_BOOKMARK{
+    type: BookMarkActionTypes.FETCH_BOOKMARK;
+}
+
+interface BookMarkSuccessAction {
+    type: BookMarkActionTypes.BOOKMARK_ADD
+    payload: any[]
+}
+interface BookMarkErrorAction {
+    type: BookMarkActionTypes.BOOKMARK_ERROR
+    payload: string;
+}
+
+export type BookMarkAction = BookMarkSuccessAction | BookMarkErrorAction | FETCH_BOOKMARK;
+
+
 

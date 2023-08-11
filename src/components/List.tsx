@@ -8,19 +8,29 @@ import './list.scss'
 
 
 
+
 const FilmList: React.FC = () => {
   const {film, error, loading, limit, page} = useTypedSelector(state => state.film)
   const {getFilmList, setTodoPage} = useActions()
+  const {getFilmIdLS} = useActions()
   const films = film.films
+  const {movie} = useTypedSelector(state => state.movie)
   useEffect(() => {
     getFilmList(page, limit)
 }, [page])
 
+useEffect(() => {
+  getFilmIdLS(movie)
+}, [])
 
+const {bookmarkWithFilms} = useTypedSelector(state => state.bookmark)
+
+console.log(bookmarkWithFilms)
 
 const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
   setTodoPage(value)
 };
+
 
 if (loading) {
   return <h1>Идет загрузка...</h1>
