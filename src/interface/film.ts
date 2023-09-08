@@ -46,8 +46,8 @@ interface setFilmPage {
 
 export type FilmAction = FetchFilmsAction | FetchFilmsSuccessAction | FetchFilmsErrorAction | setFilmPage;
 
-export interface IMovieBasket {
-    movie: IFilm[];
+export interface IMovieLSBasket {
+    movieLS: IFilm[];
     error: null | string;
 }
 
@@ -68,7 +68,7 @@ interface FetchMovieIdErrorAction {
 export type MovieBacketAction = FetchMovieIdErrorAction | FetchMovieIdAction;
 
 export interface BookmarkState {
-    [bookmarkWithFilms: string]: any
+    [bookmarkWithFilms: string]: any;
     error: null | string
 }
 
@@ -85,7 +85,7 @@ interface FETCH_BOOKMARK{
 
 interface BookMarkSuccessAction {
     type: BookMarkActionTypes.BOOKMARK_ADD
-    payload: any[]
+    payload: any
 }
 interface BookMarkErrorAction {
     type: BookMarkActionTypes.BOOKMARK_ERROR

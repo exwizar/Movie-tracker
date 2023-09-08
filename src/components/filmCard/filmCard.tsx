@@ -3,6 +3,7 @@ import { IFilm } from '../../interface/film'
 import './film.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
+import { useActions } from '../../hooks/useActions';
 
 
 
@@ -14,22 +15,25 @@ interface FilmProps {
 const FilmCard: React.FC<FilmProps> = ({film}) => {
 
   let countries = film.countries.map(item => item.country)
-  const {movie} = useTypedSelector(state => state.movie)
+  const {movieLS} = useTypedSelector(state => state.movieLS)
+  const {getFilmIdLS} = useActions()
   const dispatch = useDispatch();
 
 
+
   const handleAddMovie = (id?: any) => {
-    let movieId: string = JSON.parse(localStorage.getItem("movie") || '[]');
+    let movieId: string = JSON.parse(localStorage.getItem("movieLS") || '[]');
     console.log(movieId)
     if(!movieId.includes(id)) {
       dispatch({type:"MOVIE_ADD", payload: id})
+      getFilmIdLS(id)
     } else {
       console.log('no work')
     }
   }
   useEffect(() => {
-    localStorage.setItem('movie', JSON.stringify(movie))
-  },[movie]);
+    localStorage.setItem('movieLS', JSON.stringify(movieLS))
+  },[movieLS]);
 
 
   return (

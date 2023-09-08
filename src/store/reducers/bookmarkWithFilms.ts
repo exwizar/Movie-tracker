@@ -1,7 +1,7 @@
 import { BookMarkAction, BookMarkActionTypes, BookmarkState} from "../../interface/film"
 export const initialState: BookmarkState = {
     bookmarkWithFilms: [],
-    error: null
+    error: null,
 }
 export const BookmarkReducer = (state = initialState, action: BookMarkAction): BookmarkState => {
     switch(action.type) {

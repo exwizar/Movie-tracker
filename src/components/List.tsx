@@ -12,18 +12,16 @@ import './list.scss'
 const FilmList: React.FC = () => {
   const {film, error, loading, limit, page} = useTypedSelector(state => state.film)
   const {getFilmList, setFilmPage} = useActions()
-  const {getFilmIdLS} = useActions()
+  const {bookmarkWithFilms} = useTypedSelector(state => state.bookmark)
+
   const films = film.films
-  const {movie} = useTypedSelector(state => state.movie)
+  const {movieLS} = useTypedSelector(state => state.movieLS)
   useEffect(() => {
     getFilmList(page, limit)
 }, [page])
 
-useEffect(() => {
-  getFilmIdLS(movie)
-}, [])
 
-const {bookmarkWithFilms} = useTypedSelector(state => state.bookmark)
+
 
 console.log(bookmarkWithFilms)
 

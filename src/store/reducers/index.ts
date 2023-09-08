@@ -5,7 +5,7 @@ import { BookmarkReducer } from './bookmarkWithFilms'
 
 export const rootReducer = combineReducers({
     film: filmReducer,
-    movie: MovieBasketReducer,
+    movieLS: MovieBasketReducer,
     bookmark: BookmarkReducer
 })
 
