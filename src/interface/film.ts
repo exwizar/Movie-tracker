@@ -74,14 +74,10 @@ export interface BookmarkState {
 
 
 export enum BookMarkActionTypes {
-    FETCH_BOOKMARK = "FETCH_BOOKMARK",
     BOOKMARK_ADD = "BOOKMARK_ADD",
     BOOKMARK_ERROR = "BOOKMARK_ERROR"
 }
 
-interface FETCH_BOOKMARK{
-    type: BookMarkActionTypes.FETCH_BOOKMARK;
-}
 
 interface BookMarkSuccessAction {
     type: BookMarkActionTypes.BOOKMARK_ADD
@@ -92,7 +88,7 @@ interface BookMarkErrorAction {
     payload: string;
 }
 
-export type BookMarkAction = BookMarkSuccessAction | BookMarkErrorAction | FETCH_BOOKMARK;
+export type BookMarkAction = BookMarkSuccessAction | BookMarkErrorAction;
 
 
 
