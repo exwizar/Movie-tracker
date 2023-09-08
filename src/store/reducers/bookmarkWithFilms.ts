@@ -5,8 +5,6 @@ export const initialState: BookmarkState = {
 }
 export const BookmarkReducer = (state = initialState, action: BookMarkAction): BookmarkState => {
     switch(action.type) {
-        case BookMarkActionTypes.FETCH_BOOKMARK:
-            return {...state, error: null, bookmarkWithFilms: []}
         case BookMarkActionTypes.BOOKMARK_ADD:
             return {...state, error: null, bookmarkWithFilms: [...state.bookmarkWithFilms, action.payload]}
         case BookMarkActionTypes.BOOKMARK_ERROR:
