@@ -55,7 +55,7 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
                 <p className='card-menu__rating'>{film.rating}</p>
             <span className='card-menu__span item2'></span>
           
-            <button className='card-menu__btn' onClick={() => handleAddMovie(film.filmId)}>Буду смотреть</button>
+            <button className='card-menu__btn' onClick={() => handleAddMovie(film.filmId)}>Буду смотреть <span className={movieLS.includes(film.filmId) ? 'span-menu__btn-active ' : 'span-menu__btn' }></span></button>
         </div>
     </div>
   )

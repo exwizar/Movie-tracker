@@ -47,7 +47,7 @@ interface setFilmPage {
 export type FilmAction = FetchFilmsAction | FetchFilmsSuccessAction | FetchFilmsErrorAction | setFilmPage;
 
 export interface IMovieLSBasket {
-    movieLS: IFilm[];
+    movieLS: any[];
     error: null | string;
 }
 
