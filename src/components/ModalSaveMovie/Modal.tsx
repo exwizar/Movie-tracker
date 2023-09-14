@@ -1,10 +1,14 @@
 import React from 'react'
+import './modal.scss'
 
-type Props = {}
 
-const Modal = (props: Props) => {
+const Modal = () => {
   return (
-    <div>Modal</div>
+    <div className="modal">
+      <div className='modal__content '>
+        fsd
+      </div>
+    </div>
   )
 }
 
