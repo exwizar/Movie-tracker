@@ -1,12 +1,17 @@
 import List from './components/List';
 import './app.scss'
 import Modal from './components/ModalSaveMovie/Modal';
+import { useTypedSelector } from './hooks/useTypedSelector';
+import { useDispatch } from 'react-redux';
 
 function App() {
 
+  const dispatch = useDispatch();
+  const {active} = useTypedSelector(state => state.active)
 
   return (
     <div className='app'>
+      <button onClick={() => dispatch({type:"SEARCH_ACTION", payload: !active})}>Open modal</button>
       <Modal/>
       <div className='app-head'>
         <h1 className='app-head__heading'>250 лучших фильмов</h1>
