@@ -2,13 +2,13 @@ export const initialState: any = {
     active: false
 }
 
-export default function navbarReducer(state = initialState, action: any) {
+export default function ModalActive(state = initialState, action: any) {
     switch (action.type) {
-        case "SET_ACTION":
+        case "MODAL_ACTIVE":
             
             return {
                 ...state,
-                isFocused: !state.isFocused
+                active: !state.active
             }
 
         default:

@@ -11,7 +11,7 @@ function App() {
 
   return (
     <div className='app'>
-      <button onClick={() => dispatch({type:"SEARCH_ACTION", payload: !active})}>Open modal</button>
+      <button onClick={() => dispatch({type:"MODAL_ACTIVE", payload: !active})}>Open modal</button>
       <Modal/>
       <div className='app-head'>
         <h1 className='app-head__heading'>250 лучших фильмов</h1>
