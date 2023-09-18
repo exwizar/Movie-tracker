@@ -9,6 +9,8 @@ export const BookmarkReducer = (state = initialState, action: BookMarkAction): B
             return {...state, error: null, bookmarkWithFilms: [...state.bookmarkWithFilms, action.payload]}
         case BookMarkActionTypes.BOOKMARK_ERROR:
             return {...state, error: action.payload, bookmarkWithFilms: []}
+        case BookMarkActionTypes.BOOKMARK_DELETE:
+            return {...state, error: null, bookmarkWithFilms: state.bookmarkWithFilms.filter((item: any)=>item.kinopoiskId !== action.payload)}
         default:
             return state
     }

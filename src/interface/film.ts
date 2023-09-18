@@ -75,7 +75,13 @@ export interface BookmarkState {
 
 export enum BookMarkActionTypes {
     BOOKMARK_ADD = "BOOKMARK_ADD",
-    BOOKMARK_ERROR = "BOOKMARK_ERROR"
+    BOOKMARK_ERROR = "BOOKMARK_ERROR",
+    BOOKMARK_DELETE = "BOOKMARK_DELETE"
+}
+
+interface BookMarkDeleteAction {
+    type: BookMarkActionTypes.BOOKMARK_DELETE
+    payload: any
 }
 
 
@@ -88,7 +94,7 @@ interface BookMarkErrorAction {
     payload: string;
 }
 
-export type BookMarkAction = BookMarkSuccessAction | BookMarkErrorAction;
+export type BookMarkAction = BookMarkSuccessAction | BookMarkErrorAction | BookMarkDeleteAction;
 
 
 
