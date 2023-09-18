@@ -3,7 +3,7 @@
 .modal {
     height: 100vh;
     width: 100vw;
-    background-color: rgba(182, 182, 182, 0.4);
+    background-color: rgba(0,0,0,0.4);
     position:fixed;
     top: 0;
     left: 0;
@@ -22,13 +22,58 @@
     .modal__content {
         padding: 20px;
         border-radius: 12px;
-        background-color: rgb(247, 247, 247);
+        background-color: rgb(114, 119, 97);
         width: 80vw;
         height: 80vh;
         transform: scale(0.5);
         transition: 0.4s all;
         &.active {
             transform: scale(1);
+        }
+
+        .film {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 20px;
+            
+            .film-block {
+                display: flex;
+                justify-content: center;
+                .film-info {
+                    padding: 10px;
+                }
+            }
+
+            .film-delete {
+                .film-delete__btn {
+                    background: none;
+                    border: none;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    box-sizing: border-box;
+                    height: 32px;
+                    padding: 8px 16px 8px 14px;
+                    font-size: 13px;
+                    font-weight: 600;
+                    font-style: normal;
+                    line-height: 16px;
+                    cursor: pointer;
+                    white-space: nowrap;
+                    text-decoration: none;
+                    color: #000000;
+                    border: 0;
+                    border-radius: 100px;
+                    outline: none;
+                    background: #a5a5a5;
+                    transition: transform .2s ease,background-color .2s ease;
+                }
+                .film-delete__btn:hover {
+                    transform: scale(1.05);
+                }
+            }
         }
 
     }
