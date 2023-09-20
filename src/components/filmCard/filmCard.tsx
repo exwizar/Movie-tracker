@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { IFilm } from '../../interface/film'
+import { BookMarkActionTypes, IFilm } from '../../interface/film'
 import './film.scss'
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
@@ -27,8 +27,10 @@ const FilmCard: React.FC<FilmProps> = ({film}) => {
     if(!movieId.includes(id)) {
       dispatch({type:"MOVIE_ADD", payload: id})
       getFilmIdLS(id)
+
     } else {
-      console.log('no work')
+      dispatch({type: BookMarkActionTypes.BOOKMARK_DELETE, payload: id})
+      dispatch({type: "MOVIE_DELETE", payload: id})
     }
   }
   useEffect(() => {
