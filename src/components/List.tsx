@@ -3,7 +3,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 import {useActions} from "../hooks/useActions";
 import { IFilm } from '../interface/film';
 import { Pagination } from '@mui/material';
-import FilmCard from './filmCard/FilmCard';
+import FilmCard from './filmCard/filmCard';
 import './list.scss'
 
 
