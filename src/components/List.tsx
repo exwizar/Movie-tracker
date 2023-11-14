@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import {useActions} from "../hooks/useActions";
 import { IFilm } from '../interface/film';
@@ -15,7 +15,6 @@ const FilmList: React.FC = () => {
   const {bookmarkWithFilms} = useTypedSelector(state => state.bookmark)
 
   const films = film.films
-  const {movieLS} = useTypedSelector(state => state.movieLS)
   useEffect(() => {
     getFilmList(page, limit)
 }, [page])

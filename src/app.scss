@@ -1,10 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300;1,700;1,900&display=swap');
-
+body {
+    background-color: rgb(230, 230, 230);
+}
 .app {
     font-family: Graphik Kinopoisk LC Web,Tahoma,Arial,Verdana,sans-serif;
     display: block;
     width: 1260px;
     margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    height: 98vh;
     .app-head {
         display: flex;
         justify-content: space-around;
@@ -12,7 +16,6 @@
         padding:30px 100px 50px 150px;
         .app-modal {
             .app-modal__open {
-                background: none;
                 border: none;
                 display: block;
                 width: 25px;
@@ -20,7 +23,7 @@
                 content: "";
                 transition: all 0.2s ease;
                 transform: scale(1.5);
-                background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%20fill='rgba(255,%20255,%20255,%200.6)'%3E%3Cpath%20d='M5.5%203.5h13V21L12%2017.45%205.5%2021V3.5Z'/%3E%3C/svg%3E");
+                background: url("data:image/svg+xml;charset=utf-8,%3Csvg%20width='24'%20height='24'%20xmlns='http://www.w3.org/2000/svg'%20fill='black'%3E%3Cpath%20d='M5.5%203.5h13V21L12%2017.45%205.5%2021V3.5Z'/%3E%3C/svg%3E");
                 &:hover {
                     filter: invert(20%);
                 }

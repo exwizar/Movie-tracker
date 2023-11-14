@@ -3,6 +3,9 @@ import './app.scss'
 import Modal from './components/ModalSaveMovie/Modal';
 import { useTypedSelector } from './hooks/useTypedSelector';
 import { useDispatch } from 'react-redux';
+import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import FilmCard from './components/filmCard/filmCard';
+import AboutFilmPage from './components/filmCard/aboutFilm/aboutFilmPage';
 
 function App() {
 
@@ -11,7 +14,7 @@ function App() {
 
   return (
     <div className='app'>
-
+<BrowserRouter>
       <Modal/>
 
         <div className='app-head'>
@@ -22,7 +25,7 @@ function App() {
             <a 
               target='_blank'
               className='app-main__link'
-              href='https://yandex.ru/support/kinopoisk/rating.html#rating__rating-2_1'
+              href='https://yandex.ru/support/kinopoisk/rating.html#rating__rating-2_1' rel="noreferrer"
               >Как формируется рейтинг
             </a>
           </div>
@@ -33,9 +36,11 @@ function App() {
           
         </div>
 
-      <div>
-        <List/>
-      </div>
+        <Routes>
+          <Route path="/" element = {<List />} />  
+          <Route path={"/:id"} element = {<AboutFilmPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
   
