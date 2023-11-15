@@ -20,10 +20,6 @@ const FilmList: React.FC = () => {
 }, [page])
 
 
-
-
-console.log(bookmarkWithFilms)
-
 const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
   setFilmPage(value)
 };

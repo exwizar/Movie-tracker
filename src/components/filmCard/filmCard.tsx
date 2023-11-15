@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useActions } from '../../hooks/useActions';
 import { Link, Route, Routes } from 'react-router-dom';
 import AboutFilmPage from './aboutFilm/aboutFilmPage';
+import AddButton from '../UI/AddButton';
 
 
 
@@ -61,7 +62,7 @@ const FilmCard: React.FC<FilmProps> = ({ film }) => {
         <p className='card-menu__rating'>{film.rating}</p>
         <span className='card-menu__span item2'></span>
 
-        <button className='card-menu__btn' onClick={() => handleAddMovie(film.filmId)}>Буду смотреть <span className={movieLS.includes(film.filmId) ? 'span-menu__btn-active ' : 'span-menu__btn'}></span></button>
+        <AddButton key={film.filmId} id={Number(film.filmId)} />
       </div>
     </div>
   )

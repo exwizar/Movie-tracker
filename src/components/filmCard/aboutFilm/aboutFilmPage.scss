@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-
+    height: 100vh;
     .poster {
         .poster-img {
             height: 430px;
@@ -13,8 +13,9 @@
     .wrapper {
         display: flex;
         justify-content: space-between;
-        margin-left: 30px;
+        margin-left: 80px;
         .main {
+            margin-top: -10px;
             .title {
                 .title-nameRu {
                     font-family: Graphik Kinopoisk LC Web,Tahoma,Arial,Verdana,sans-serif;

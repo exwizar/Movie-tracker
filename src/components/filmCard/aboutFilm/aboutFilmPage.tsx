@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import './aboutFilmPage.scss'
+import AddButton from '../../UI/AddButton';
 
 //be634f3e-0f65-4b41-b7db-5f4e73ef8949
 const AboutFilmPage = () => {
@@ -44,6 +45,16 @@ const AboutFilmPage = () => {
   }, [id])
   console.log(post)
 
+  if (post.length === 0) {
+    return <h1>Идет загрузка...</h1>
+  }
+
+  function filterStuff(worker: string) {
+   let filStuff: any = [];
+   staff?.map((item: any) => item.professionText === worker && item.nameRu !== '' ? filStuff.push(item.nameRu) : '')
+    return filStuff.join(', ')
+  }
+
   return (
     <div className='post'>
       <div className="poster">
@@ -56,6 +67,7 @@ const AboutFilmPage = () => {
           <div className="title">
             <div className='title-nameRu'>{post.nameRu} ({post.year})</div>
             <div className='title-nameEn'>{post.nameOriginal} +{post.ratingAgeLimits?.split('').filter((item: any) => Number(item)).join('')}</div>
+            <AddButton key={id} id={Number(id)} />
           </div>
           <h2 className='title-info'>О фильме</h2>
           <div className="styles_column">
@@ -81,45 +93,45 @@ const AboutFilmPage = () => {
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Сценарист</div>
-              <div className="styles_valueDark">{staff?.map((item: any) => item.professionText === "Сценаристы" ? `${item.nameRu},` : '').join(' ')?.slice(0, -1)}</div>
+              <div className="styles_valueDark">{filterStuff('Сценаристы')}</div>
             </div>
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Продюсеры</div>
-              <div className="styles_valueDark">{staff?.map((item: any) => item.professionText === "Продюсеры" ? `${item.nameRu},` : '').join(' ')?.slice(0, -1)}</div>
+              <div className="styles_valueDark">{filterStuff('Продюсеры')}</div>
             </div>
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Художники</div>
-              <div className="styles_valueDark">{staff?.map((item: any) => item.professionText === "Художники" ? `${item.nameRu},` : '').join(' ')?.slice(0, -1)}</div>
+              <div className="styles_valueDark">{filterStuff('Художники')}</div>
             </div>
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Монтажеры</div>
-              <div className="styles_valueDark">{staff?.map((item: any) => item.professionText === "Монтажеры" ? `${item.nameRu},` : '').join(' ')?.slice(0, -1)}</div>
+              <div className="styles_valueDark">{filterStuff('Монтажеры')}</div>
             </div>
 
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Бюджет</div>
-              <div className="styles_valueDark">${money.items?.map((item: any) => item.type === "BUDGET" ? item.amount : '')}</div>
+              <div className="styles_valueDark">$ {money.items?.map((item: any) => item.type === "BUDGET" ? item.amount : '')}</div>
             </div>
 
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Сборы в США</div>
-              <div className="styles_valueDark">${money.items?.map((item: any) => item.type === "USA" ? item.amount : '')}</div>
+              <div className="styles_valueDark">$ {money.items?.map((item: any) => item.type === "USA" ? item.amount : '')}</div>
             </div>
 
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Сборы в мире</div>
-              <div className="styles_valueDark">${money.items?.map((item: any) => item.type === "WORLD" ? item.amount : '')}</div>
+              <div className="styles_valueDark">$ {money.items?.map((item: any) => item.type === "WORLD" ? item.amount : '')}</div>
             </div>
 
             <div className="styles_rowDark">
               <div className="styles_titleDark">Время</div>
-              <div className="styles_valueDark">{post.filmLength} мин. / {`${Math.floor(post.filmLength/60)}:${Math.floor(post.filmLength%60)}`}</div>
+              <div className="styles_valueDark">{post.filmLength} мин. / {`0${Math.floor(post.filmLength/60)}:${Math.floor(post.filmLength%60)}`}</div>
             </div>
 
           </div>
